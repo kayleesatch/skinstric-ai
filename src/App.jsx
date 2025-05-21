@@ -1,9 +1,10 @@
+import Hero from "./components/HeroSection/Hero";
 import Nav from "./components/Nav";
-import Hero from "./components/Hero";
+
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="relative w-screen h-screen overflow-hidden">
       <Nav />
       <Hero />
     </div>

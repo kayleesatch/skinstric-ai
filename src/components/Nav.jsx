@@ -1,12 +1,15 @@
+import codeButton from '../assets/figma/button-simple.png';
+
 const Nav = () => {
   return (
-    <nav className="flex justify-between items-center px-6 py-4 border-b border-black">
-        <div className="text-xl font-semibold">
-            Skinstric <span className="text-gray-500">[INTRO]</span>
+    <nav className="w-full flex items-center justify-between px-4 py-4 bg-white relative z-10">
+
+        <div className="flex items-center gap-2">
+            <span className='text-xs font-semibold text-black tracking-tight cursor-pointer'>SKINSTRIC</span>
+            <span className="text-xs font-semibold text-gray-400 tracking-tight">[ INTRO ]</span>
         </div>
-        <button className="bg-black text-white px-4 py-2 rounded">
-            Menu
-        </button>
+
+            <img src={codeButton} alt="Button" className='h-7 mr-4' />
     </nav>
   )
 }

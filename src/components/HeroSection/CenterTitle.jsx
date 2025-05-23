@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from 'framer-motion';
 import HeroPara from "./HeroPara";
+import { useNavigate } from "react-router-dom";
 
 const CenterTitle = ({ slideDirection }) => {
+    const navigate = useNavigate();
+
     const variants = {
         center: {
             x: 0,
@@ -41,7 +44,7 @@ const CenterTitle = ({ slideDirection }) => {
             <motion.div
                 variants={variants}
                 animate={currentVariant}
-                className="text-4xl md:text-6xl lg:text-8xl leading-tight bg-transparent">
+                className="text-4xl md:text-6xl lg:text-8xl lg:text-bold leading-tight bg-transparent">
             Sophisticated <br /> skincare                
         </motion.div>
 
@@ -49,9 +52,15 @@ const CenterTitle = ({ slideDirection }) => {
             <HeroPara />
         </div>
         
-        <button className="mt-4 text-sm font-bold flex items-center gap-2 uppercase tracking-wide lg:hidden bg-white hover:scale-105 transition-transform duration-300">
+        <button
+            onClick={() => navigate('/introduction')} 
+            className="mt-4 text-sm font-bold flex items-center gap-2 uppercase tracking-wide lg:hidden bg-white hover:scale-105 transition-transform duration-300"
+        >
             Enter Experience
-            <img src="src/assets/figma/iconButton.png" alt="" className="w-6 h-6" />
+            <img 
+                src="src/assets/figma/iconButton.png" 
+                alt="enter" 
+                className="w-6 h-6 hover:scale-180 transition-transform duration-300" />
         </button>
     </motion.div>
         

@@ -8,10 +8,10 @@ import Diamond from './Diamond';
 
 const Hero = () => {
   const [slideDirection, setSlideDirection] = useState(null);
+  
   let timeoutRef = useRef();
 
   const handleHover = (direction) => {
-    console.log('Hover direction:', direction);
     clearTimeout(timeoutRef.current);
     if (direction) {
       setSlideDirection(direction);

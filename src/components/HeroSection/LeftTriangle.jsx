@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from 'framer-motion'
+import { reverseIconButton } from "../../assets/figma";
 
 const LeftTriangle= ({ hidden, onHover }) => {
     const [ripple, setRipple] = useState(false);
@@ -41,7 +42,7 @@ const LeftTriangle= ({ hidden, onHover }) => {
             <motion.button 
                 className="group flex items-center gap-2 bg-transparent -translate-y-[52%] border-none cursor-pointer ml-6 mb-10 z-30 uppercase text-sm w-50 h-10">
                 <img 
-                    src="src/assets/figma/reverseIconButton.png" 
+                    src={reverseIconButton} 
                     alt="Left Button"
                     className="w-6 h-6 hover:scale-180 transition-transform duration-300" 
                 />

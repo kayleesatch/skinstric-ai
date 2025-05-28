@@ -1,30 +1,29 @@
 import React, { useState } from "react";
 import Diamond from "./HeroSection/Diamond";
 import { useNavigate } from "react-router-dom";
+import { reverseIconButton } from "../assets/figma";
 
 const Location = () => {
     const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate();
-    const name = localStorage.getItem('name');
-
+    
     const handleSubmit = async () => {
+        const name = localStorage.getItem('name');
+        const location = inputValue;
         try{
             const response = await fetch('https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne', {
                 method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json', 
-                },
-                body: JSON.stringify({
-                    name: name, 
-                    location: inputValue })
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({ name, location })
             });
 
             if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Failed to submit location: ${errorText}`);
-            } 
+                throw new Error('Failed to submit location');
+            }
+            
+            console.log({ Success: `${name} from ${location} has been added.`});
 
-            navigate('/photo');
+            navigate('/photoselect');
         } catch (err) {
             console.error('Error submitting location:', err);
         }
@@ -33,7 +32,7 @@ const Location = () => {
     return (
         <section className='relative w-full h-screen bg-white overflow-hidden'>
 
-            <Diamond  forceVisible />
+            <Diamond  alwaysVisible />
 
             <div className='absolute top-5 left-6 text-xs uppercase text-gray-500 z-30'>
                 To Start Analysis
@@ -54,7 +53,9 @@ const Location = () => {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={(e) => {
-                            if (e.key === 'Enter') handleSubmit();
+                            if (e.key === 'Enter' && inputValue.trim()) { 
+                                handleSubmit();
+                            }
                         }}
                         className='w-full pt-6 pb-2 border-b-2 border-gray-800 text-center tracking-tighter text-4xl outline-none bg-transparent placeholder-gray-800'
                         placeholder='Where are you from?'
@@ -67,7 +68,7 @@ const Location = () => {
                 onClick={() => navigate(-1)}
             >
                 <img 
-                    src="src/assets/figma/reverseIconButton.png" 
+                    src={reverseIconButton} 
                     alt="Back"
                     className='w-6 h-6 hover:scale-180 transition-transform duration-300'
                 />

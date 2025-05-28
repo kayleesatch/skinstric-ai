@@ -24,7 +24,7 @@ const Hero = () => {
 
   return (
     <section className='relative w-full h-screen bg-white flex items-center justify-center'>
-      <Diamond />
+      <Diamond forceVisible />
 
       <div className='absolute inset-0 flex items-center justify-center z-10'>
         <CenterTitle slideDirection={slideDirection}/>

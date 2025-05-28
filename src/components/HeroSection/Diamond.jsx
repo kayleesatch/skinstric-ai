@@ -1,7 +1,14 @@
 import React from "react";
 
-const Diamond = ({ forceVisible = false }) => {
-    const visibilityClasses = forceVisible ? 'flex' : 'lg:hidden';
+const Diamond = ({ forceVisible = false, alwaysVisible = false }) => {
+
+    let visibilityClasses = 'hidden';
+
+    if (alwaysVisible) {
+        visibilityClasses = 'flex';
+    } else if (forceVisible) {
+        visibilityClasses = 'flex md:flex lg:hidden'
+    }
     
     return (
     <div className={`absolute inset-0 flex top-[-12%] items-center justify-center ${visibilityClasses} z-0`} >

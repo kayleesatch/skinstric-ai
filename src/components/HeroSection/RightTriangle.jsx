@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { iconButton } from "../../assets/figma";
 
 const RightTriangle = ({ hidden, onHover }) => {
     const [ripple, setRipple] = useState(false);
@@ -48,7 +49,7 @@ const RightTriangle = ({ hidden, onHover }) => {
                 className="group flex items-center gap-2 bg-transparent -translate-y-[48%] border-none cursor-pointer mr-6 mb-10 z-30 uppercase text-sm w-50 h-10">
                 <span>Take Test</span>
                 <img 
-                    src="src/assets/figma/iconButton.png" 
+                    src={iconButton} 
                     alt="Right Button"
                     className="w-6 h-6 hover:scale-180 transition-transform duration-300" 
                 />

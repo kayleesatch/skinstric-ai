@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from 'framer-motion';
 import HeroPara from "./HeroPara";
 import { useNavigate } from "react-router-dom";
+import { iconButton } from "../../assets/figma";
 
 const CenterTitle = ({ slideDirection }) => {
     const navigate = useNavigate();
@@ -58,7 +59,7 @@ const CenterTitle = ({ slideDirection }) => {
         >
             Enter Experience
             <img 
-                src="src/assets/figma/iconButton.png" 
+                src={iconButton} 
                 alt="enter" 
                 className="w-6 h-6 hover:scale-180 transition-transform duration-300" />
         </button>

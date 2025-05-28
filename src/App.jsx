@@ -3,6 +3,9 @@ import Hero from "./components/HeroSection/Hero";
 import Nav from "./components/Nav";
 import Introduction from './components/Introduction';
 import Location from "./components/Location";
+import PhotoSelect from "./components/PhotoSection/PhotoSelect";
+import PhotoCapture from "./components/PhotoSection/PhotoCapture";
+import Upload from "./components/PhotoSection/Upload";
 
 function AppRoutes() {
   const location = useLocation();
@@ -15,6 +18,9 @@ function AppRoutes() {
         <Route path="/" element={<Hero />} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/location" element={<Location />} />
+        <Route path="/photoselect" element={<PhotoSelect />} />
+        <Route path="/photocapture" element={<PhotoCapture />} />
+        <Route path="/upload" element={<Upload />} />
       </Routes>
     </div>
   )

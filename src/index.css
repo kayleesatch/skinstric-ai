@@ -94,3 +94,6 @@ button:focus-visible {
   }
 }
 
+.reverse-spin {
+  animation-direction: reverse;
+}

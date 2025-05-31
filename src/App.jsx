@@ -6,6 +6,8 @@ import Location from "./components/Location";
 import PhotoSelect from "./components/PhotoSection/PhotoSelect";
 import PhotoCapture from "./components/PhotoSection/PhotoCapture";
 import Upload from "./components/PhotoSection/Upload";
+import AnalysisMenu from "./components/AnalysisMenu";
+import Demographics from "./components/DemographicsSection/Demographics";
 
 function AppRoutes() {
   const location = useLocation();
@@ -21,6 +23,8 @@ function AppRoutes() {
         <Route path="/photoselect" element={<PhotoSelect />} />
         <Route path="/photocapture" element={<PhotoCapture />} />
         <Route path="/upload" element={<Upload />} />
+        <Route path="/analysis-menu" element={<AnalysisMenu />} />
+        <Route path="/demographics" element={<Demographics />} />
       </Routes>
     </div>
   )

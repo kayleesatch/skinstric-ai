@@ -5,6 +5,7 @@ import cameraIcon from './cameraIcon.png';
 import galleryIcon from './galleryIcon.png';
 import bltrLabelLine from './bl-trLabelLine.png';
 import trblLabelLine from './tr-blLabelLine.png';
+import bulletDiamond from './bulletDiamond.png';
 
 export { 
     buttonSimple, 
@@ -13,5 +14,6 @@ export {
     cameraIcon, 
     galleryIcon,
     bltrLabelLine,
-    trblLabelLine
+    trblLabelLine,
+    bulletDiamond
 }

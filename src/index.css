@@ -76,10 +76,6 @@ button {
 button:hover {
   border-color: transparent;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} 
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -94,6 +90,20 @@ button:focus-visible {
   }
 }
 
-.reverse-spin {
-  animation-direction: reverse;
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+  .animate-spin-reverse {
+    animation: spin-reverse 3s linear infinite;
+  }
+  
+  @keyframes animate-spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
 }

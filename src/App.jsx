@@ -11,11 +11,19 @@ import Demographics from "./components/DemographicsSection/Demographics";
 
 function AppRoutes() {
   const location = useLocation();
-  const isHero = location.pathname === '/';
+  const pathname = location.pathname;
+  
+  const isHero = pathname === '/';
+
+  const hasUploadedImages = [
+    '/upload',
+    '/analysis-menu',
+    '/demographics'
+  ].includes(pathname);
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
-      <Nav showImage={isHero} />
+      <Nav showImage={isHero} hasUploadedImages={hasUploadedImages} />
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/introduction" element={<Introduction />} />

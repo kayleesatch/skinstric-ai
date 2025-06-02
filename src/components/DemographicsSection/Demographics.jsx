@@ -2,33 +2,56 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Sidebar from './Sidebar';
 import CenterDisplay from './CenterDisplay';
-import PredictionItem from './PredictionItem';
 import PredictionList from './PredictionList';
+import BottomBanner from './BottomBanner';
+import { useLocation } from 'react-router-dom';
+import RandomPredictions from '../RandomPredictions';
 
-export default function Demographics({ base64Image }) {
+export default function Demographics() {
+
+    const location = useLocation()
+    console.log("[LOG 1] Full location.state:", location.state);
+
+    const base64Image = location?.state?.base64Image;
+    const passedPredictions = location?.state?.predictions;
+    console.log("[LOG 2] base64Image snippet:", base64Image?.slice?.(0, 50));
+    console.log("[LOG 2.5] passed predictions:", passedPredictions);
+
     const [selectedCategory, setSelectedCategory] = useState("race");
-    const [predictions, setPredictions] = useState({ race: {}, age: {}, gender: {} });
+    const [predictions, setPredictions] = useState(passedPredictions || { race: {}, age: {}, gender: {} });
     const [actualValue, setActualValue] = useState({ race: "", age: "", gender: ""});
     const [loading, setLoading] = useState(true);
 
-    const selectedPrediction = predictions?.[selectedCategory];
 
     useEffect(() => {
-        const base64Image = "base64_encoded_string";
-        
-        axios
-            .post("https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
-                    { image: base64Image }
-            )
-            .then((res) => {
-                setPredictions(res.data.data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error("Error fetching demographics:", err);
-                setLoading(false);
-            });
-    }, [base64Image]);
+        if (passedPredictions) {
+            console.log("[LOG 3.5] using predictions from Upload");
+            setPredictions(passedPredictions);
+            setLoading(false);
+        } else if (base64Image) {
+            console.log("[LOG 4] Sending request to API...");
+            setLoading(true);
+            axios
+                .post("https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
+                        { image: base64Image },
+                        { headers: { "Content-Type": "application/json" } }
+                )
+                .then((res) => {
+                    console.log('{LOG 5] API response:', res.data);
+                    const newPredictions = res.data.data;
+                    setPredictions(newPredictions);
+
+                    const randomValues = RandomPredictions(newPredictions);
+                    setActualValue(randomValues);
+
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.error("Error", err);
+                    setLoading(false);
+                });
+            }
+        }, [base64Image, passedPredictions]);
 
     const handleSelect = (value) => {
         setActualValue((prev) => ({ ...prev, [selectedCategory]: value }));
@@ -47,20 +70,28 @@ export default function Demographics({ base64Image }) {
 
             <Sidebar 
                 selectedCategory={selectedCategory} 
-                setSelectedCategory={setSelectedCategory} 
+                setSelectedCategory={setSelectedCategory}
+                actualValue={actualValue} 
+                predictions={predictions}
                 />
             <CenterDisplay 
-                selectedCategory={selectedCategory}     
                 actualValue={actualValue[selectedCategory]}
-                selectedPrediction={selectedPrediction} 
-                />
-            <PredictionItem
-                selectedCategory={selectedCategory}
-                predictions={predictions[selectedCategory] || {}}
-                actualValue={actualValue[selectedCategory]}
+                selectedPrediction={predictions[selectedCategory]}
+                onClick={handleSelect}
                 loading={loading}
-                onSelect={handleSelect}
                 />
+            <PredictionList
+                predictions={predictions}
+                selectedCategory={selectedCategory}
+                onSelectPrediction={(selectedCategory, value) => {
+                    setActualValue((prev) => ({ 
+                        ...prev, 
+                        [selectedCategory]: value }));
+                }}
+                actualValue={actualValue}
+            />
+
+            <BottomBanner />
         </div>
        </div> 
     );

@@ -6,14 +6,14 @@ import { reverseIconButton } from "../../assets/figma";
 const Upload = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { base64, predictions } = location.state || {};
+    const { base64Image, predictions } = location.state || {};
 
-    if (!base64 || !predictions) {
+    if (!base64Image || !predictions) {
         return (
             <div className='flex flex-col items-center justify-center h-screen'>
                 <p className='text-red-600 text-xl'>No image or predictions found.</p>
                 <button
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/analysis-menu", { state: { base64Image, predictions } })}
                     className='hover:scale-105 transition'
                 >
                    <img src={reverseIconButton} alt="Back" />
@@ -23,7 +23,7 @@ const Upload = () => {
         );
     }
 
-        return  <LoadingScreen base64={base64} predictions={predictions} />
+        return  <LoadingScreen base64Image={base64Image} predictions={predictions} />
 }
 
 export default Upload;

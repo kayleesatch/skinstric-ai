@@ -26,7 +26,7 @@ const PhotoSelect = () => {
             const reader = new FileReader();
             reader.onloadend = async () => {
                 const base64Image = reader.result;
-                console.log("Base64 string starts with:", base64Image.slice(0,30));
+                console.log("base64Image string starts with:", base64Image.slice(0,30));
 
                 try {
                     const res = await fetch('https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo', {
@@ -39,7 +39,7 @@ const PhotoSelect = () => {
                     console.log("API response:", data);
 
                     if (data.success) {
-                        navigate('/upload', { state: { base64: base64Image, predictions: data.data } });
+                        navigate('/upload', { state: { base64Image: base64Image, predictions: data.data } });
                     } else {
                         alert('Upload failed. Please try again.');
                     }

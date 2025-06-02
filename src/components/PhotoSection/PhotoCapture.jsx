@@ -6,7 +6,7 @@ const PhotoCapture = () => {
     const canvasRef = useRef(null);
     const [stream, setStream] = useState(null);
     const [captured, setCaptured] = useState(false);
-    const [base64Image, setBase64Image] = useState(null)
+    const [base64Image, setbase64Image] = useState(null)
     const navigate = useNavigate();
     
 
@@ -41,7 +41,7 @@ const PhotoCapture = () => {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         const base64Image = canvas.toDataURL("image/jpeg");
 
-        setBase64Image(base64);
+        setbase64Image(base64Image);
         setCaptured(true);
 
         try {
@@ -53,7 +53,7 @@ const PhotoCapture = () => {
 
             const data = await res.json();
             if (data.message.includes("SUCCESS")) {
-                navigate("/upload", { state: { base64, predictions: data.data } });
+                navigate("/upload", { state: { base64Image, predictions: data.data } });
             } else {
                 alert("Upload failed. Please try again.");
             }
@@ -65,7 +65,7 @@ const PhotoCapture = () => {
 
     const resetCapture = () => {
         setCaptured(false);
-        setBase64Image(null);
+        setbase64Image(null);
     };
 
     return (

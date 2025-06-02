@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Sidebar({ selectedCategory, setSelectedCategory, actualValue }) {
+export default function Sidebar({ selectedCategory, setSelectedCategory, actualValue, predictions = {} }) {
     const categories = [
         { label: "Race", key: "race" },
         { label: "Age", key: "age" },
@@ -11,7 +11,13 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, actualV
         <div className="w-1/6 bg-gray-100 flex flex-col items-center">
             <div className="flex flex-col gap-0.5 w-full px-1 pt-1">
                 {categories.map(({ label, key }) => {
-                    const actual = actualValue?.[key];
+                    const actual =  actualValue?.[key];
+
+                    const sorted = Object.entries(predictions?.[key] || {})
+                        .sort((a, b) => b[1] - a[1]);
+                    const topPrediction = sorted[0]?.[0] || "";
+
+
                     return (
                         <div
                             key={key}
@@ -22,11 +28,13 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, actualV
                                     : "bg-gray-300 text-black hover:bg-gray-500 border-gray-400"
                                 }`}
                         >
-                            {actual && (
-                                <span className="text-sm mt-1 opacity-80">
-                                    {actual.charAt(0).toUpperCase() + actual.slice(1)}
+
+                            {topPrediction && (
+                                <span className="absolute top-2 left-2 text-xs font-semibold opacity-70">
+                                    {topPrediction.charAt(0).toUpperCase() + topPrediction.slice(1)}
                                 </span>
                             )}
+
                             <span className="text-lg font-bold">{label}</span>
                         </div>
                     );

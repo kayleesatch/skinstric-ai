@@ -27,7 +27,6 @@ const SpinningDiamond = () => {
                             >
                                 <DiamondLoad />
                         </motion.div>
-                        <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-xl font-semibold text-gray-700 whitespace-nowrap">Preparing Your Analysis...</p>
                     </div>
                 </div>
         );

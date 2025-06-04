@@ -8,6 +8,9 @@ import PhotoCapture from "./components/PhotoSection/PhotoCapture";
 import Upload from "./components/PhotoSection/Upload";
 import AnalysisMenu from "./components/AnalysisMenu";
 import Demographics from "./components/DemographicsSection/Demographics";
+import LoadingAnalysis from "./components/LoadingAnalysis.jsx";
+import CameraPrep from "./components/PhotoSection/CameraPrep.jsx";
+
 
 function AppRoutes() {
   const location = useLocation();
@@ -28,11 +31,13 @@ function AppRoutes() {
         <Route path="/" element={<Hero />} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/location" element={<Location />} />
-        <Route path="/photoselect" element={<PhotoSelect />} />
-        <Route path="/photocapture" element={<PhotoCapture />} />
+        <Route path="/photo-select" element={<PhotoSelect />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/analysis-menu" element={<AnalysisMenu />} />
+        <Route path="/photo-capture" element={<PhotoCapture />} />
+        <Route path="/loading-analysis" element={<LoadingAnalysis />} />
         <Route path="/demographics" element={<Demographics />} />
+        <Route path="/camera-prep" element={<CameraPrep />} />
       </Routes>
     </div>
   )

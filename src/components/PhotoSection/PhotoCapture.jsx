@@ -1,111 +1,138 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { iconButton, reverseIconButton, whiteBullet } from "../../assets/figma";
+import { uploadToAPI } from "../../utilities/UploadToAPI";
+
 
 const PhotoCapture = () => {
     const videoRef = useRef(null);
-    const canvasRef = useRef(null);
     const [stream, setStream] = useState(null);
-    const [captured, setCaptured] = useState(false);
-    const [base64Image, setbase64Image] = useState(null)
+    const [base64Image, setBase64Image] = useState(null);
+    const [showPreview, setShowPreview] = useState(false);
     const navigate = useNavigate();
-    
 
-    useEffect(() => {
-        async function startCamera() {
-            try {
-                const camStream = await navigator.mediaDevices.getUserMedia({ video: true });
-                setStream(camStream);
-                if (videoRef.current) {
-                    videoRef.current.srcObject = camStream;
-                }
-            } catch (err) {
-                alert("Camera access denied.", err);
-                navigate(-1);
-            }
+    const tips = [
+        "Neutral expression",
+        "Frontal pose",
+        "Adequate lighting"
+    ];
+
+useEffect(() => {
+    const getCamera = async () => {
+       try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        setStream(stream);
+        if (videoRef.current) {
+            videoRef.current.srcObject = stream;
         }
+       } catch (err) {
+        console.error("Camera error:", err);
+        navigate('/photo-select')
+       }
+    };
 
-        startCamera();
-        return () => {
-            stream?.getTracks().forEach(track => track.stop());
-        };
-    }, []);
+    getCamera();
 
-    const captureImage = async () => {
-        const canvas = canvasRef.current;
+    return () => {
+        if(stream) {
+            stream.getTracks().forEach(track => track.stop());
+        }
+    };
+}, [navigate]);
+    
+    const captureImage = () => {
+        const canvas = document.createElement("canvas");
         const video = videoRef.current;
-        if (!canvas || !video) return;
+        if (!video) return;
 
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const base64Image = canvas.toDataURL("image/jpeg");
-
-        setbase64Image(base64Image);
-        setCaptured(true);
-
-        try {
-            const res = await fetch("https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ image: base64Image }),
-            });
-
-            const data = await res.json();
-            if (data.message.includes("SUCCESS")) {
-                navigate("/upload", { state: { base64Image, predictions: data.data } });
-            } else {
-                alert("Upload failed. Please try again.");
-            }
-        } catch (err) {
-            console.error("API error:", err);
-            alert("Something went wrong with the API.");
-        }
+        canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+       
+        const base64Image = canvas.toDataURL("base64Image/png");
+        setBase64Image(base64Image);
+        setShowPreview(true);
     };
 
-    const resetCapture = () => {
-        setCaptured(false);
-        setbase64Image(null);
+    const handleRetake = () => {
+        setBase64Image(null);
+        setShowPreview(false);
     };
+
+    const handleContinue = () => {
+        navigate("/loading-analysis", {
+            state: { base64Image, predictions: [], nextRoute: "/analysis-menu" }
+        })
+    }
+
 
     return (
-        <section className='relative w-full h-screen bg-white flex items-center justify-center flex-col'>
-            <div className='relative w-[90%] max-w-[500px] aspect-video border-4 border-dotted border-gray-400 rounded-lg overflow-hidden'>
-                {!captured ? (
+        <section className='relative w-full h-screen bg-black overflow-hidden'>
+
+            {!showPreview ? (
+                <>
                     <video
                         ref={videoRef}
                         autoPlay
                         playsInline
                         muted
-                        className='w-full h-full object-cover'    
+                        className='absolute top-0 left-0 w-full h-full object-cover z-0'    
                     />
-                ) : (
-                    <img 
-                        src={base64Image}
-                        alt="Captured"
-                        className='w-full h-full object-cover'    
-                    />
-                )}
-                <canvas ref={canvasRef} style={{ display: 'none' }} />
-            </div>
 
-            <div className='mt-6 flex gap-4'>
-                {!captured ? (
+
                     <button 
                         onClick={captureImage}
-                        className='px-6 py-2 bg-blue-600 text-white rounded-lg hover:scale-105 transition-transform'
+                        className='absolute right-8 top-1/2 transform -translate-y-1/2 w-20 h-20 rounded-full bg-white shadow-lg z-20'
                     >
-                        Capture
+                        <div className="w-10 h-10 rounded-full bg-gray-300" />
                     </button>
-                ) : (
+
+                    <div className="absolute bottom-30 w-full flex flex-col items-center text-white opacity-90 z-30">
+                        <p className="uppercase font-semibold tracking-widest text-[10px]">
+                            To Get Better Results, make sure to have:
+                        </p>
+                        <ul className="flex flex-row gap-x-4 mt-1">
+                            {tips.map((tip, i) => (
+                                <li key={i} className="flex items-center gap-1">
+                                    <img src={whiteBullet} alt="Bullet" className="w-2 h-2" />
+                                    <span className="text-[10px]">{tip}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </>
+            ) : (
+                <>
+                <img 
+                    src={base64Image} 
+                    alt="Captured" 
+                    className='absolute top-0 left-0 w-full h-full object-cover z-10' 
+                />
+
+                <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30'>
+                    <p className='text-white text-xs bg-transparent px-4 py-2'>
+                        Great Shot!
+                    </p>
+                </div>
+
+                <div className='absolute bottom-20 w-full px-6 flex justify-between z-30'>
                     <button
-                        onClick={resetCapture}
-                        className='px-6 py-2 bg-gray-500 text-white rounded-lg hover:scale-105 transition-transform'
+                        onClick={handleRetake}
+                        className="flex items-center gap-2 text-white text-sm"
                     >
-                        Retake
+                        <img src={reverseIconButton} alt="Retake" className='w-8 h-8 filter invert' />
+                        <span>RETURN</span>
                     </button>
-                )}
-            </div>
+                    <button
+                        onClick={handleContinue}
+                        className="flex items-center gap-2 text-white text-sm"
+                    >
+                        <img src={iconButton} alt="Continue" className='w-8 h-8 filter invert' />
+                        <span>CONTINUE</span>
+                    </button>
+                </div>
+            </>
+            )}
         </section>
     );
 };

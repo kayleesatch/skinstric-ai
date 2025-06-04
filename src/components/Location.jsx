@@ -23,7 +23,7 @@ const Location = () => {
             
             console.log({ Success: `${name} from ${location} has been added.`});
 
-            navigate('/photoselect');
+            navigate('/photo-select');
         } catch (err) {
             console.error('Error submitting location:', err);
         }

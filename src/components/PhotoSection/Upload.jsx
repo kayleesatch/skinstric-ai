@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import LoadingScreen from "../LoadingScreen";
 import { reverseIconButton } from "../../assets/figma";
+import LoadingAnalysis from "../LoadingAnalysis";
 
 const Upload = () => {
     const location = useLocation();
@@ -23,7 +23,7 @@ const Upload = () => {
         );
     }
 
-        return  <LoadingScreen base64Image={base64Image} predictions={predictions} />
+        return  <LoadingAnalysis base64Image={base64Image} predictions={predictions} />
 }
 
 export default Upload;

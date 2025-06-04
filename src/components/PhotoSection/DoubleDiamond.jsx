@@ -16,7 +16,7 @@ const DoubleDiamond =({
 
     return (
         <div className='flex flex-col md:flex-row items-center justify-center gap-30 lg:gap-100 mt-[-50px] z-10'>
-                <SmallDiamond 
+                <SmallDiamond
                     onClick={onLeftClick} 
                     label={leftLabel} 
                     labelPosition={leftLabelPosition}

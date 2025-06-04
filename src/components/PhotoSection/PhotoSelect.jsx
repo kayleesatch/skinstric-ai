@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DoubleDiamond from "./DoubleDiamond";
 import { cameraIcon, galleryIcon, reverseIconButton, bltrLabelLine, trblLabelLine } from "../../assets/figma";
+import PermissionModal from "./PermissionModal";
+import { uploadToAPI } from "../../utilities/UploadToAPI";
 
 const PhotoSelect = () => {
     const navigate = useNavigate();
+    const [showPermissionModal, setShowPermissionModal] = useState(false);
 
-    const openCamera = async () => {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-            stream.getTracks().forEach(track => track.stop());
-            navigate('/photocapture');
-        } catch (error) {
-            alert('Camera access denied. Please allow access to proceed.', error);
-        }
+    const openCamera = () => {
+        setShowPermissionModal(true);
+    };
+
+    const handleAllow = () => {
+        setShowPermissionModal(false);
+        navigate('/camera-prep');
+    };
+
+    const handleDeny = () => {
+        setShowPermissionModal(false);
     };
 
     const openFileDialog = () => {
@@ -22,34 +28,21 @@ const PhotoSelect = () => {
 
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
-        if (file) {
+        if (!file) return;
+
+        
             const reader = new FileReader();
             reader.onloadend = async () => {
                 const base64Image = reader.result;
-                console.log("base64Image string starts with:", base64Image.slice(0,30));
 
-                try {
-                    const res = await fetch('https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ image: base64Image })
-                    });
-
-                    const data = await res.json();
-                    console.log("API response:", data);
-
-                    if (data.success) {
-                        navigate('/upload', { state: { base64Image: base64Image, predictions: data.data } });
-                    } else {
-                        alert('Upload failed. Please try again.');
-                    }
-                } catch (err) {
-                    console.error('API error:', err);
-                    alert('Something went wrong with the API.');
+                const { success, predictions, error } = await uploadToAPI(base64Image);
+                if (success) {
+                    navigate('/loading-analysis', { state: { base64Image, predictions, nextRoute: '/analysis-menu' } });
+                } else {
+                    alert(error || "Upload failed. Please try again.");
                 }
-            };
-            reader.readAsDataURL(file)
-        }
+            };        
+            reader.readAsDataURL(file);
     };
     
     return (
@@ -82,6 +75,13 @@ const PhotoSelect = () => {
                 leftLabelImage={bltrLabelLine}
                 rightLabelImage={trblLabelLine}
             />
+
+            {showPermissionModal && (
+                <PermissionModal
+                    onAllow={handleAllow}
+                    onDeny={handleDeny}
+                />
+            )}
 
             <button 
                 className="absolute bottom-6 left-6 flex items-center gap-2 text-sm uppercase"

@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { iconButton, reverseIconButton } from "../assets/figma";
+import { iconButton, reverseIconButton } from "@/assets/figma";
 
 export default function AnalysisMenu() {
     const location = useLocation();

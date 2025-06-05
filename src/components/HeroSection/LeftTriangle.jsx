@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from 'framer-motion'
-import { reverseIconButton } from "../../assets/figma";
+import { reverseIconButton } from "@/assets/figma";
 
 const LeftTriangle= ({ hidden, onHover }) => {
     const [ripple, setRipple] = useState(false);

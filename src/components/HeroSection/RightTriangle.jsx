@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { iconButton } from "../../assets/figma";
+import { iconButton } from "@/assets/figma";
 
 const RightTriangle = ({ hidden, onHover }) => {
     const [ripple, setRipple] = useState(false);

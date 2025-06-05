@@ -1,4 +1,4 @@
-export const uploadToAPI = async (base64Image) => {
+export const UploadToAPI = async (base64Image) => {
     try {
         const res = await fetch("https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo", {
             method: "POST",

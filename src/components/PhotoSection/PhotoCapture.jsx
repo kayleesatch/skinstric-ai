@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { iconButton, reverseIconButton, whiteBullet } from "../../assets/figma";
+import { iconButton, reverseIconButton, whiteBullet } from "@/assets/figma";
 
 
 const PhotoCapture = () => {

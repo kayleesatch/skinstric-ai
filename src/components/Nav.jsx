@@ -1,4 +1,4 @@
-import codeButton from '../assets/figma/button-simple.png';
+import { buttonSimple } from '@/assets/figma';
 
 const Nav = ({ showImage, hasUploadedImages }) => {
   return (
@@ -11,9 +11,9 @@ const Nav = ({ showImage, hasUploadedImages }) => {
             </span>
         </div>
 
-            {showImage && <img src={codeButton} alt="Button" className='h-7 mr-4' />}
+            {showImage && <img src={buttonSimple} alt="Button" className='h-7 mr-4' />}
     </nav>
   )
 }
 
-export default Nav
+export default Nav;

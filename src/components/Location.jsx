@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Diamond from "@/components/HeroSection/Diamond";
 import { useNavigate } from "react-router-dom";
-import { reverseIconButton } from "../assets/figma";
+import { reverseIconButton } from "@/assets/figma";
 
 const Location = () => {
     const [inputValue, setInputValue] = useState("");

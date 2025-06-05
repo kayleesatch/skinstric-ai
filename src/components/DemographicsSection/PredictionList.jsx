@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { whiteBullet, blackBullet } from "../../assets/figma";
+import { whiteBullet, blackBullet } from "@/assets/figma";
 
 export default function PredictionList({
     predictions,

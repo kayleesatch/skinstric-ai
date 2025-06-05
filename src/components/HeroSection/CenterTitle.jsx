@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from 'framer-motion';
 import HeroPara from "@/components/HeroSection/HeroPara";
 import { useNavigate } from "react-router-dom";
-import { iconButton } from "../../assets/figma";
+import { iconButton } from "@/assets/figma";
 
 const CenterTitle = ({ slideDirection }) => {
     const navigate = useNavigate();

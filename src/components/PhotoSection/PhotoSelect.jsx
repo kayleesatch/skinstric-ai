@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DoubleDiamond from "@/components/PhotoSection/DoubleDiamond";
-import { cameraIcon, galleryIcon, reverseIconButton, bltrLabelLine, trblLabelLine } from "../../assets/figma";
+import { cameraIcon, galleryIcon, reverseIconButton, bltrLabelLine, trblLabelLine } from "@/assets/figma";
 import PermissionModal from "@/components/PhotoSection/PermissionModal";
-import { uploadToAPI } from "@/utilities/UploadToAPI";
+import { UploadToAPI } from "@/utilities/UploadToAPI";
 
 const PhotoSelect = () => {
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ const PhotoSelect = () => {
             reader.onloadend = async () => {
                 const base64Image = reader.result;
 
-                const { success, predictions, error } = await uploadToAPI(base64Image);
+                const { success, predictions, error } = await UploadToAPI(base64Image);
                 if (success) {
                     navigate('/loading-analysis', { state: { base64Image, predictions, nextRoute: '/analysis-menu' } });
                 } else {

@@ -1,4 +1,4 @@
-import buttonSimple from '@/assets/figma/button-simple.png';
+import buttonSimple from '@/assets/figma/buttonSimple.png';
 import iconButton from '@/assets/figma/iconButton.png';
 import reverseIconButton from '@/assets/figma/reverseIconButton.png';
 import cameraIcon from '@/assets/figma/cameraIcon.png';

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import SpinningDiamond from "@/components/SpinningDiamond";
 import { useNavigate, useLocation } from "react-router-dom";
-import { UploadToAPI } from "@/utilities/UploadToAPI";
+import { uploadToAPI } from "@/utilities/UploadToAPI.js";
 
 
 const LoadingAnalysis = () => {
@@ -17,7 +17,7 @@ const LoadingAnalysis = () => {
                 return;
             }
 
-            const result = await UploadToAPI(base64Image);
+            const result = await uploadToAPI(base64Image);
 
             if (result.success) {
                 navigate(nextRoute, { state: { predictions: result.predictions } });

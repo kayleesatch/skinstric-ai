@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import Hero from "./components/HeroSection/Hero";
-import Nav from "./components/Nav";
-import Introduction from './components/Introduction';
-import Location from "./components/Location";
-import PhotoSelect from "./components/PhotoSection/PhotoSelect";
-import PhotoCapture from "./components/PhotoSection/PhotoCapture";
-import Upload from "./components/PhotoSection/Upload";
-import AnalysisMenu from "./components/AnalysisMenu";
-import Demographics from "./components/DemographicsSection/Demographics";
-import LoadingAnalysis from "./components/LoadingAnalysis.jsx";
-import CameraPrep from "./components/PhotoSection/CameraPrep.jsx";
+import Hero from "@/components/HeroSection/Hero";
+import Nav from "@/components/Nav";
+import Introduction from '@/components/Introduction';
+import Location from "@/components/Location";
+import PhotoSelect from "@/components/PhotoSection/PhotoSelect";
+import PhotoCapture from "@/components/PhotoSection/PhotoCapture";
+import Upload from "@/components/PhotoSection/Upload";
+import AnalysisMenu from "@/components/AnalysisMenu";
+import Demographics from "@/components/DemographicsSection/Demographics";
+import LoadingAnalysis from "@/components/LoadingAnalysis.jsx";
+import CameraPrep from "@/components/PhotoSection/CameraPrep.jsx";
 
 
 function AppRoutes() {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import SpinningDiamond from "@/SpinningDiamond";
+import SpinningDiamond from "@/components/SpinningDiamond";
 import { blackBullet } from "../../assets/figma";
 
 const CameraPrep = () => {

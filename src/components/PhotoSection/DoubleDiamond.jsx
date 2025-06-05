@@ -1,5 +1,5 @@
 import React from "react";
-import SmallDiamond from "@/SmallDiamond";
+import SmallDiamond from "@/components/PhotoSection/SmallDiamond";
 
 const DoubleDiamond =({
     leftContent,

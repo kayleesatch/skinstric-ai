@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import SpinningDiamond from "@/SpinningDiamond";
+import SpinningDiamond from "@/components/SpinningDiamond";
 import { useNavigate, useLocation } from "react-router-dom";
 import { uploadToAPI } from "@/utilities/UploadToAPI";
 

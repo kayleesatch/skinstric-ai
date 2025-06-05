@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Diamond from "@/HeroSection/Diamond";
+import Diamond from "@/components/HeroSection/Diamond";
 import { useNavigate } from "react-router-dom";
 import { reverseIconButton } from "../assets/figma";
 

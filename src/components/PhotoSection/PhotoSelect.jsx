@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DoubleDiamond from "@/DoubleDiamond";
+import DoubleDiamond from "@/components/PhotoSection/DoubleDiamond";
 import { cameraIcon, galleryIcon, reverseIconButton, bltrLabelLine, trblLabelLine } from "../../assets/figma";
-import PermissionModal from "@/PermissionModal";
+import PermissionModal from "@/components/PhotoSection/PermissionModal";
 import { uploadToAPI } from "@/utilities/UploadToAPI";
 
 const PhotoSelect = () => {

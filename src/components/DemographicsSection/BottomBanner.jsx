@@ -1,5 +1,5 @@
 import React from "react"
-import { reverseIconButton, resetButton, confirmButton } from "../../assets/figma"
+import { reverseIconButton, resetButton, confirmButton } from "@/assets/figma/"
 import { useNavigate } from "react-router-dom"
 
 function BottomBanner() {

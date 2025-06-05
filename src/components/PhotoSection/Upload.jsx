@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { reverseIconButton } from "../../assets/figma";
-import LoadingAnalysis from "../LoadingAnalysis";
+import LoadingAnalysis from "@/LoadingAnalysis";
 
 const Upload = () => {
     const location = useLocation();

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import SpinningDiamond from "./SpinningDiamond";
+import SpinningDiamond from "@/SpinningDiamond";
 import { useNavigate, useLocation } from "react-router-dom";
-import { uploadToAPI } from "../utilities/UploadToAPI";
+import { uploadToAPI } from "@/utilities/UploadToAPI";
 
 
 const LoadingAnalysis = () => {

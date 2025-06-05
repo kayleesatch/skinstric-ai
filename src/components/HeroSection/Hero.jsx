@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
-import CenterTitle from './CenterTitle';
-import LeftTriangle from './LeftTriangle';
-import RightTriangle from './RightTriangle';
-import HeroPara from './HeroPara';
-import Diamond from './Diamond';
+import CenterTitle from '@/CenterTitle';
+import LeftTriangle from '@/LeftTriangle';
+import RightTriangle from '@/RightTriangle';
+import HeroPara from '@/HeroPara';
+import Diamond from '@/Diamond';
 
 
 const Hero = () => {

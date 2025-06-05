@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DoubleDiamond from "./DoubleDiamond";
+import DoubleDiamond from "@/DoubleDiamond";
 import { cameraIcon, galleryIcon, reverseIconButton, bltrLabelLine, trblLabelLine } from "../../assets/figma";
-import PermissionModal from "./PermissionModal";
-import { uploadToAPI } from "../../utilities/UploadToAPI";
+import PermissionModal from "@/PermissionModal";
+import { uploadToAPI } from "@/utilities/UploadToAPI";
 
 const PhotoSelect = () => {
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ const PhotoSelect = () => {
         const file = e.target.files[0];
         if (!file) return;
 
-        
+
             const reader = new FileReader();
             reader.onloadend = async () => {
                 const base64Image = reader.result;

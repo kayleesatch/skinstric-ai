@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import Sidebar from './Sidebar';
-import CenterDisplay from './CenterDisplay';
-import PredictionList from './PredictionList';
-import BottomBanner from './BottomBanner';
+import Sidebar from '@/Sidebar';
+import CenterDisplay from '@/CenterDisplay';
+import PredictionList from '@/PredictionList';
+import BottomBanner from '@/BottomBanner';
 import { useLocation } from 'react-router-dom';
-import RandomPredictions from '../RandomPredictions';
+import RandomPredictions from '@/RandomPredictions';
 
 export default function Demographics() {
 

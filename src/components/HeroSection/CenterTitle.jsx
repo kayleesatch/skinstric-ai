@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from 'framer-motion';
-import HeroPara from "./HeroPara";
+import HeroPara from "@/HeroPara";
 import { useNavigate } from "react-router-dom";
 import { iconButton } from "../../assets/figma";
 

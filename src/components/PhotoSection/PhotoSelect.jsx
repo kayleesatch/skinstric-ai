@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DoubleDiamond from "@/components/PhotoSection/DoubleDiamond";
 import { cameraIcon, galleryIcon, reverseIconButton, bltrLabelLine, trblLabelLine } from "@/assets/figma";
 import PermissionModal from "@/components/PhotoSection/PermissionModal";
-import { UploadToAPI } from "@/utilities/UploadToAPI";
+import { UploadToAPI } from "@/utilities/UploadToAPI.js";
 
 const PhotoSelect = () => {
     const navigate = useNavigate();

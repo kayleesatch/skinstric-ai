@@ -39,7 +39,7 @@ const Location = () => {
             </div>
 
             <div className='absolute inset-0 flex flex-col  items-center justify-center z-20'>
-                <div className='relative w-[320px] flex flex-col items-center -mt-30'>
+                <div className='relative w-[350px] flex flex-col items-center -mt-30'>
 
                     <label
                         className={`absolute top-0 uppercase text-gray-400 text-xs transition-all duration-300 pointer-events-none

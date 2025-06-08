@@ -84,13 +84,13 @@ const PhotoSelect = () => {
             )}
 
             <button 
-                className="absolute bottom-6 left-6 flex items-center gap-2 text-sm uppercase"
+                className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 flex items-center gap-2 text-sm sm:text-base uppercase"
                 onClick={() => navigate(-1)}
             >
                 <img 
                     src={reverseIconButton} 
                     alt="Back"
-                    className="w-6 h-6 hover:scale-180 transition-transform duration-300"
+                    className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-180 transition-transform duration-300"
                 />
                 <span>Back</span>
             </button>

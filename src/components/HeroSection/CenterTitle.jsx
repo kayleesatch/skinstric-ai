@@ -37,7 +37,7 @@ const CenterTitle = ({ slideDirection }) => {
 
     return (
         <motion.div
-            className='absolute inset-0 flex flex-col top-[-12%] items-center justify-center text-center px-4 z-10'
+            className='absolute inset-0 flex flex-col top-2 sm:top-0 md:top-[-6%] lg:top[-12%] items-center justify-center text-center px-4 z-10'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut'}}
@@ -45,7 +45,7 @@ const CenterTitle = ({ slideDirection }) => {
             <motion.div
                 variants={variants}
                 animate={currentVariant}
-                className="text-4xl md:text-6xl lg:text-8xl lg:text-bold leading-tight bg-transparent">
+                className="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight bg-transparent">
             Sophisticated <br /> skincare                
         </motion.div>
 
@@ -55,7 +55,7 @@ const CenterTitle = ({ slideDirection }) => {
         
         <button
             onClick={() => navigate('/introduction')} 
-            className="mt-4 text-sm font-bold flex items-center gap-2 uppercase tracking-wide lg:hidden bg-white hover:scale-105 transition-transform duration-300"
+            className="mb-2 text-sm font-bold flex items-center gap-2 uppercase tracking-wide lg:hidden bg-white hover:scale-105 transition-transform duration-300"
         >
             Enter Experience
             <img 

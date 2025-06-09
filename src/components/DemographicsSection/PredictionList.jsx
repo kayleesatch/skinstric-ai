@@ -14,9 +14,9 @@ export default function PredictionList({
     .sort((a, b) => b.value - a.value);
 
     return (
-       <div className="w-[30%] md:w-[45%] h-full bg-gray-100 overflow-y-auto py-2 pr-1">
+       <div className="w-full md:w-[30%] lg:w-[45%] bg-gray-100 overflow-y-auto py-2 pr-1 h-full pb-20">
             <div className="flex justify-between items-center mb-3 px-1">
-                <h3 className="text-sm font-semibold uppercase text-gray-600">{selectedCategory}</h3>
+                <h3 className="text-xs md:text-sm font-semibold uppercase text-gray-600">{selectedCategory}</h3>
                 <span className="text-xs font-semibold uppercase text-gray-600">A.I. Confidence</span>
             </div>
 
@@ -31,7 +31,7 @@ export default function PredictionList({
                         onClick={() => onSelectPrediction(selectedCategory, label)}
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
-                        className={`cursor-pointer justify-between items-center py-1 flex transition-colors duration-150 text-xs 
+                        className={`cursor-pointer justify-between items-center py-2 px-2 flex transition-colors duration-150 text-xs md:text-xs 
                             ${isSelected 
                                 ? 'bg-black text-white' 
                                 : 'hover:bg-black hover:text-white text-black bg-transparent'

@@ -8,8 +8,8 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, actualV
     ];
 
     return (
-        <div className="w-1/6 bg-gray-100 flex flex-col items-center">
-            <div className="flex flex-col gap-0.5 w-full px-1 pt-1">
+        <div className="w-full md:w-1/6 bg-gray-100 flex flex-row md:flex-col items-center md:items-stretch md: justify-start">
+            <div className="flex flex-row md:flex-col gap-1 w-full md:px-1 md:pt-1 px-2 py-1 justify-center">
                 {categories.map(({ label, key }) => {
                     const actual =  actualValue?.[key];
 

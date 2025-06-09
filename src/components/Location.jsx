@@ -57,7 +57,7 @@ const Location = () => {
                                 handleSubmit();
                             }
                         }}
-                        className='w-full pt-6 pb-2 border-b-2 border-gray-800 text-center tracking-tighter text-4xl outline-none bg-transparent placeholder-gray-800'
+                        className='w-full pt-6 pb-2 border-b-2 border-gray-800 text-center tracking-tighter text-4xl outline-none bg-transparent text-black placeholder-gray-800'
                         placeholder='Where are you from?'
                     />
                 </div>

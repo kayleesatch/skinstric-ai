@@ -36,7 +36,7 @@ const Introduction = () => {
                                 navigate('/location');
                             }
                         }}
-                        className='w-full px-3 pt-6 pb-2 border-b-2 border-gray-800 text-center text-4xl outline-none bg-transparent placeholder-gray-800'
+                        className='w-full px-3 pt-6 pb-2 border-b-2 border-gray-800 text-center text-4xl outline-none bg-transparent text-black placeholder-gray-800'
                         placeholder='Introduce Yourself'
                     />
                 </div>

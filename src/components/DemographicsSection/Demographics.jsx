@@ -62,11 +62,11 @@ export default function Demographics() {
 
         <div className='p-6'>
             <p className='text-xs text-gray-500 uppercase'>A.I. Analysis</p>
-            <h2 className='text-6xl font-bold uppercase'>Demographics</h2>
+            <h2 className='text-3xl md:text-6xl font-bold uppercase'>Demographics</h2>
             <p className='text-xs text-gray-500 mt-1 uppercase'>Predicted Age & Race</p>
         </div>
 
-        <div className='flex flex-grow'>
+        <div className='flex flex-col md:flex-row flex-grow overflow-y-auto'>
 
             <Sidebar 
                 selectedCategory={selectedCategory} 

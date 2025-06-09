@@ -46,7 +46,7 @@ const PhotoSelect = () => {
     };
     
     return (
-        <section className="relative w-full h-screen bg-white overflow-hidden flex flex-col items-center justify-center">
+        <section className="relative w-full h-screen bg-white overflow-hidden flex flex-col items-center justify-center px-4 pb-20 sm:pb-10">
             <input 
                 type="file"
                 accept="image/*"

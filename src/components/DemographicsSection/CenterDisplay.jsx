@@ -4,12 +4,21 @@ export default function CenterDisplay({ actualValue, selectedPrediction }) {
     const actual = actualValue;
 
     const percentage = parseFloat(selectedPrediction?.[actual]) * 100 || 0;
-    const radius = 170;
+    const [radius, setRadius] =useState(170);
     const stroke = 6;
     const normalizedRadius = radius - stroke / 2;
     const circumference = 2 * Math.PI * normalizedRadius;
 
     const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const updateRadius = () => {
+            setRadius(window.innerWidth < 640 ? 100 : 170);
+        };
+        updateRadius();
+        window.addEventListener("resize", updateRadius);
+        return () => window.removeEventListener("resize", updateRadius);
+    }, [])
 
     useEffect(() => {
         setProgress(percentage);

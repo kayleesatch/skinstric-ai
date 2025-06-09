@@ -53,7 +53,7 @@ export default function AnalysisMenu() {
                     <img src={reverseIconButton} alt="Back" />
                     <span className="uppercase">Back</span>
             </div>
-            <div className="absolute bottom-20 right-6 cursor-pointer flex items-center space-x-2" onClick={() => navigate("/demographics", { state: { base64Image } })}>
+            <div className="absolute bottom-20 right-6 cursor-pointer flex items-center space-x-2" onClick={() => navigate("/demographics", { state: { base64Image, predictions } })}>
                     <span className="uppercase">Get Summary</span>
                     <img src={iconButton} alt="Get Summary" />
             </div>

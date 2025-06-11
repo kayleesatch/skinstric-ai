@@ -45,7 +45,7 @@ const CenterTitle = ({ slideDirection }) => {
             <motion.div
                 variants={variants}
                 animate={currentVariant}
-                className="text-4xl md:text-6xl lg:text-8xl text-black font-bold leading-tight bg-transparent">
+                className="text-4xl md:text-6xl lg:text-8xl text-black font-sans font-bold leading-tight bg-transparent">
             Sophisticated <br /> skincare                
         </motion.div>
 
@@ -55,7 +55,7 @@ const CenterTitle = ({ slideDirection }) => {
         
         <button
             onClick={() => navigate('/introduction')} 
-            className="mb-2 text-sm font-bold flex items-center gap-2 uppercase tracking-wide lg:hidden bg-white hover:scale-105 transition-transform duration-300"
+            className="mb-2 text-sm font-bold font-sans flex items-center gap-2 uppercase tracking-wide lg:hidden bg-white hover:scale-105 transition-transform duration-300"
         >
             Enter Experience
             <img 

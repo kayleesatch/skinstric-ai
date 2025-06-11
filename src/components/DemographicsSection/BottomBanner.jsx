@@ -12,7 +12,7 @@ function BottomBanner() {
                 alt="Left Button"
                 className="w-4 h-4 sm:w-6 sm:h-6 hover:scale-150 transition-transform duration-300" 
                 />
-                <span className="uppercase text-xs sm:text-sm">Back</span>
+                <span className="uppercase font-sans text-xs sm:text-sm">Back</span>
             </div>
             
 

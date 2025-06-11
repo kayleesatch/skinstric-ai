@@ -47,7 +47,7 @@ const RightTriangle = ({ hidden, onHover }) => {
             <motion.button 
                 onClick={handleClick}
                 className="group flex items-center gap-2 bg-transparent -translate-y-[48%] border-none cursor-pointer mr-6 mb-10 z-30 uppercase text-sm w-50 h-10">
-                <span>Take Test</span>
+                <span className="font-sans">Take Test</span>
                 <img 
                     src={iconButton} 
                     alt="Right Button"

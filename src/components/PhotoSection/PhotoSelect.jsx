@@ -92,7 +92,7 @@ const PhotoSelect = () => {
                     alt="Back"
                     className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-180 transition-transform duration-300"
                 />
-                <span>Back</span>
+                <span className="font-sans">Back</span>
             </button>
         </section>
     );

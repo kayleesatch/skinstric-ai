@@ -17,7 +17,7 @@ const Upload = () => {
                     className='hover:scale-105 transition'
                 >
                    <img src={reverseIconButton} alt="Back" />
-                   <span>Back</span>
+                   <span className="font-sans">Back</span>
                 </button>
             </div>
         );

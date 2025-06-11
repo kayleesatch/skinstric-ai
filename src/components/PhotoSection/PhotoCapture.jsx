@@ -120,14 +120,14 @@ useEffect(() => {
                         className="flex items-center gap-2 text-white text-sm"
                     >
                         <img src={reverseIconButton} alt="Retake" className='w-8 h-8 filter invert' />
-                        <span>RETURN</span>
+                        <span className="font-sans">RETURN</span>
                     </button>
                     <button
                         onClick={handleContinue}
                         className="flex items-center gap-2 text-white text-sm"
                     >
                         <img src={iconButton} alt="Continue" className='w-8 h-8 filter invert' />
-                        <span>CONTINUE</span>
+                        <span className="font-sans">CONTINUE</span>
                     </button>
                 </div>
             </>

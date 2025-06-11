@@ -46,7 +46,7 @@ const LeftTriangle= ({ hidden, onHover }) => {
                     alt="Left Button"
                     className="w-6 h-6 hover:scale-180 transition-transform duration-300" 
                 />
-                <span>Discover A.I.</span>
+                <span className="font-sans">Discover A.I.</span>
             </motion.button>
         </div>
     )

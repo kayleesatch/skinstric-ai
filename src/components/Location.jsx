@@ -72,7 +72,7 @@ const Location = () => {
                     alt="Back"
                     className='w-6 h-6 hover:scale-180 transition-transform duration-300'
                 />
-                <span>Back</span>
+                <span className="font-sans">Back</span>
             </button>
         </section>
     )

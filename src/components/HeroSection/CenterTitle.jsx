@@ -45,7 +45,7 @@ const CenterTitle = ({ slideDirection }) => {
             <motion.div
                 variants={variants}
                 animate={currentVariant}
-                className="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight bg-transparent">
+                className="text-4xl md:text-6xl lg:text-8xl text-black font-bold leading-tight bg-transparent">
             Sophisticated <br /> skincare                
         </motion.div>
 
